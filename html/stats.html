@@ -13,25 +13,25 @@
         </div>
       </div>
     </div>
-    <p class="center-align red-text loading-text">Tapping the kegs...</p>
+    <p class="center-align red-text loading-text">Spinning up the hamster...</p>
   </div>
-  <h1>Top Artists This Week</h1>
-  <div class="row" ng-repeat="topArtist in statsCtrl.weeklyArtists">
+  <h1 ng-if="!statsCtrl.loading">Top Artists This Week</h1>
+  <div class="row" ng-repeat="topArtist in statsCtrl.weeklyArtists" ng-if="!statsCtrl.loading">
     <div class="col s12">
       {{topArtist.name}}
       {{topArtist.playcount}}
     </div>
   </div>
-  <h1>Top Tracks This Week</h1>
-  <div class="row" ng-repeat="topTrack in statsCtrl.weeklyTracks">
+  <h1 ng-if="!statsCtrl.loading">Top Tracks This Week</h1>
+  <div class="row" ng-repeat="topTrack in statsCtrl.weeklyTracks" ng-if="!statsCtrl.loading">
     <div class="col s12">
       {{topTrack.name}}
       {{topTrack.playcount}}
       {{topTrack.artist.name}}
     </div>
   </div>
-  <h1>What I'm listening to right now</h1>
-  <div class="row" ng-repeat="recentTrack in statsCtrl.recentTracks">
+  <h1 ng-if="!statsCtrl.loading">What I'm listening to right now</h1>
+  <div class="row" ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading">
     <div class="col s12">
       {{recentTrack.name}}
       {{recentTrack.artist['#text']}}
