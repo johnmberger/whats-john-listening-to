@@ -1,0 +1,59 @@
+body {
+  background: url('../assets/background.png');
+  background-repeat: repeat;
+}
+
+.card-header {
+  padding: 15px 10px 20px 20px;
+  background: firebrick;
+  color: white;
+}
+
+.stats {
+  margin: 40px inherit;
+}
+
+.first-row {
+  margin-top: 40px;
+}
+
+.mobile-nav-header {
+  height: 250px;
+}
+.mobile-nav-header .user-view, .mobile-nav-header .background {
+  height: 100%;
+}
+.mobile-nav-img {
+  height: 250px;
+  width: 200px;
+}
+.custom-divider {
+  margin-top: 0px !important;
+}
+
+.beer-cards {
+  padding-top: 25px;
+}
+
+.main-page-button {
+  margin-top: 70vh;
+}
+
+.loading {
+  margin-bottom: 40px;
+}
+.sad-mac {
+  max-height: 150px;
+  margin: 0 auto;
+}
+
+.chip {
+  overflow-x: hidden;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 20%;
+}

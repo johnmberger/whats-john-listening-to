@@ -1,0 +1,54 @@
+<div class="container beer-cards">
+  <div class="row" ng-if="statsCtrl.loading">
+    <div class="col s12 loading">
+      <div class="preloader-wrapper big active center-align">
+        <div class="spinner-layer spinner-red-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="center-align red-text loading-text">Tapping the kegs...</p>
+  </div>
+  <h1>Top Artists This Week</h1>
+  <div class="row" ng-repeat="topArtist in statsCtrl.weeklyArtists">
+    <div class="col s12">
+      {{topArtist.name}}
+      {{topArtist.playcount}}
+    </div>
+  </div>
+  <h1>Top Tracks This Week</h1>
+  <div class="row" ng-repeat="topTrack in statsCtrl.weeklyTracks">
+    <div class="col s12">
+      {{topTrack.name}}
+      {{topTrack.playcount}}
+      {{topTrack.artist.name}}
+    </div>
+  </div>
+  <h1>What I'm listening to right now</h1>
+  <div class="row" ng-repeat="recentTrack in statsCtrl.recentTracks">
+    <div class="col s12">
+      {{recentTrack.name}}
+      {{recentTrack.artist['#text']}}
+      <p ng-if="recentTrack.date.uts">
+        {{recentTrack.date.uts * 1000 | date:"MMMM d, yyyy h:mm a"}}
+      </p>
+      <img src="{{recentTrack.image[2]['#text']}}" alt="">
+    </div>
+  </div>
+  <div ng-if="statsCtrl.error">
+    <div class="row">
+      <div class="col s12 m4 center-align">
+        <img class="sad-mac" src="../assets/sad_mac.jpg" alt="error">
+      </div>
+      <div class="col s12 m8">
+        <h3 class="header">{{statsCtrl.error}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
