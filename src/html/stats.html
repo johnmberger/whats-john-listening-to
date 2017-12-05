@@ -15,6 +15,80 @@
     </div>
     <p class="center-align red-text loading-text">Spinning up the hamster...</p>
   </div>
+  <h1 ng-if="!statsCtrl.loading">Currently Listening to:</h1>
+  <div class="row" ng-if="!statsCtrl.loading">
+    <div class="carousel" carousel>
+     <a class="carousel-item" href="#one!">
+       <img src="{{statsCtrl.recentTracks[0].image[2]['#text']}}">
+       <span class="now-playing-text">
+         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[0].name}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">person</i>{{statsCtrl.recentTracks[0].artist['#text']}}
+       </span>
+       <span class="now-playing-text now-playing" ng-if="statsCtrl.recentTracks[0]['@attr'] && statsCtrl.recentTracks[0]['@attr'].nowplaying">
+         <i class="material-icons">equalizer</i>Now Playing
+       </span>
+       <span class="now-playing-text" ng-if="statsCtrl.recentTracks[0].date && statsCtrl.recentTracks[0].date.uts">
+         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[0].date.uts * 1000 | momentJS}}
+       </span>
+     </a>
+     <a class="carousel-item" href="#two!">
+       <img src="{{statsCtrl.recentTracks[1].image[2]['#text']}}">
+       <span class="now-playing-text">
+         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[1].name}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">person</i>{{statsCtrl.recentTracks[1].artist['#text']}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[1].date.uts * 1000 | momentJS}}
+       </span>
+     </a>
+     <a class="carousel-item" href="#three!">
+       <img src="{{statsCtrl.recentTracks[2].image[2]['#text']}}">
+       <span class="now-playing-text">
+         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[2].name}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">person</i>{{statsCtrl.recentTracks[2].artist['#text']}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[2].date.uts * 1000 | momentJS}}
+       </span>
+     </a>
+     <a class="carousel-item" href="#four!"><img src="{{statsCtrl.recentTracks[3].image[2]['#text']}}">
+       <span class="now-playing-text">
+         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[3].name}}
+       </span>
+       <span class="now-playing-text">
+         <i class="material-icons">person</i>{{statsCtrl.recentTracks[3].artist['#text']}}
+      </span>
+      <span class="now-playing-text">
+        <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[3].date.uts * 1000 | momentJS}}
+      </span>
+     </a>
+     <a class="carousel-item" href="#five!">
+       <img src="{{statsCtrl.recentTracks[4].image[2]['#text']}}">
+       <span class="now-playing-text">
+         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[4].name}}
+       </span>
+      <span class="now-playing-text">
+     <i class="material-icons">person</i>{{statsCtrl.recentTracks[4].artist['#text']}}
+       </span>
+     <span class="now-playing-text">
+       <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[4].date.uts * 1000 | momentJS}}
+     </span>
+   </a>
+
+   </div>
+  </div>
+  <ul class="collapsible popout" data-collapsible="accordion">
+    <li ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading && $index >= 4">
+      <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}} - {{recentTrack.date.uts * 1000 | momentJS}}</div>
+      <div class="collapsible-body"><span>{{recentTrack.artist}}<br><br><img ng-if="recentTrack.image && recentTrack.image[2] && recentTrack.image[2]['#text']" src="{{ recentTrack.image[2]['#text'] }}" alt=""></span></div>
+    </li>
+  </ul>
   <h1 ng-if="!statsCtrl.loading">Top Artists This Week</h1>
   <div class="row" ng-repeat="topArtist in statsCtrl.weeklyArtists" ng-if="!statsCtrl.loading">
     <div class="col s12">
@@ -28,17 +102,6 @@
       {{topTrack.name}}
       {{topTrack.playcount}}
       {{topTrack.artist.name}}
-    </div>
-  </div>
-  <h1 ng-if="!statsCtrl.loading">What I'm listening to right now</h1>
-  <div class="row" ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading">
-    <div class="col s12">
-      {{recentTrack.name}}
-      {{recentTrack.artist['#text']}}
-      <p ng-if="recentTrack.date.uts">
-        {{recentTrack.date.uts * 1000 | date:"MMMM d, yyyy h:mm a"}}
-      </p>
-      <img src="{{recentTrack.image[2]['#text']}}" alt="">
     </div>
   </div>
   <div ng-if="statsCtrl.error">

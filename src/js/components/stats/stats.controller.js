@@ -7,6 +7,7 @@
   statsController.$inject = ['$scope', 'getStats'];
 
   function statsController($scope, getStats) {
+
     let vm = this;
 
     vm.getStats = () => {
@@ -33,11 +34,13 @@
       .then((res, err) => {
         if (!err) {
           vm.recentTracks = res.data.recenttracks.track;
+          console.log(vm.recentTracks);
           vm.loading = false;
         } else {
           vm.error = 'We\'re having trouble connecting to Last.fm. Please try later!';
           vm.loading = false;
         }
+
       })
       .catch(() => {
         vm.error = 'Last.fm is mad at us right now. Try back in an hour or so!';
