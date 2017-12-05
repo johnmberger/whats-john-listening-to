@@ -21,63 +21,63 @@
      <a class="carousel-item" href="#one!">
        <img src="{{statsCtrl.recentTracks[0].image[2]['#text']}}">
        <span class="now-playing-text">
-         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[0].name}}
+         <i class="material-icons carousel-icon">music_video</i>{{statsCtrl.recentTracks[0].name}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">person</i>{{statsCtrl.recentTracks[0].artist['#text']}}
+         <i class="material-icons carousel-icon">person</i>{{statsCtrl.recentTracks[0].artist['#text']}}
        </span>
        <span class="now-playing-text now-playing" ng-if="statsCtrl.recentTracks[0]['@attr'] && statsCtrl.recentTracks[0]['@attr'].nowplaying">
-         <i class="material-icons">equalizer</i>Now Playing
+         <i class="material-icons carousel-icon">equalizer</i>Now Playing
        </span>
        <span class="now-playing-text" ng-if="statsCtrl.recentTracks[0].date && statsCtrl.recentTracks[0].date.uts">
-         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[0].date.uts * 1000 | momentJS}}
+         <i class="material-icons carousel-icon">schedule</i><span time="{{statsCtrl.recentTracks[0].date.uts * 1000}}"></span>
        </span>
      </a>
      <a class="carousel-item" href="#two!">
        <img src="{{statsCtrl.recentTracks[1].image[2]['#text']}}">
        <span class="now-playing-text">
-         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[1].name}}
+         <i class="material-icons carousel-icon">music_video</i>{{statsCtrl.recentTracks[1].name}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">person</i>{{statsCtrl.recentTracks[1].artist['#text']}}
+         <i class="material-icons carousel-icon">person</i>{{statsCtrl.recentTracks[1].artist['#text']}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[1].date.uts * 1000 | momentJS}}
+         <i class="material-icons carousel-icon">schedule</i><span time="{{statsCtrl.recentTracks[1].date.uts * 1000}}"></span>
        </span>
      </a>
      <a class="carousel-item" href="#three!">
        <img src="{{statsCtrl.recentTracks[2].image[2]['#text']}}">
        <span class="now-playing-text">
-         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[2].name}}
+         <i class="material-icons carousel-icon">music_video</i>{{statsCtrl.recentTracks[2].name}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">person</i>{{statsCtrl.recentTracks[2].artist['#text']}}
+         <i class="material-icons carousel-icon">person</i>{{statsCtrl.recentTracks[2].artist['#text']}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[2].date.uts * 1000 | momentJS}}
+         <i class="material-icons carousel-icon">schedule</i><span time="{{statsCtrl.recentTracks[2].date.uts * 1000}}"></span>
        </span>
      </a>
      <a class="carousel-item" href="#four!"><img src="{{statsCtrl.recentTracks[3].image[2]['#text']}}">
        <span class="now-playing-text">
-         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[3].name}}
+         <i class="material-icons carousel-icon">music_video</i>{{statsCtrl.recentTracks[3].name}}
        </span>
        <span class="now-playing-text">
-         <i class="material-icons">person</i>{{statsCtrl.recentTracks[3].artist['#text']}}
+         <i class="material-icons carousel-icon">person</i>{{statsCtrl.recentTracks[3].artist['#text']}}
       </span>
       <span class="now-playing-text">
-        <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[3].date.uts * 1000 | momentJS}}
+        <i class="material-icons carousel-icon">schedule</i><span time="{{statsCtrl.recentTracks[3].date.uts * 1000}}"></span>
       </span>
      </a>
      <a class="carousel-item" href="#five!">
        <img src="{{statsCtrl.recentTracks[4].image[2]['#text']}}">
        <span class="now-playing-text">
-         <i class="material-icons">music_video</i>{{statsCtrl.recentTracks[4].name}}
+         <i class="material-icons carousel-icon">music_video</i>{{statsCtrl.recentTracks[4].name}}
        </span>
       <span class="now-playing-text">
-     <i class="material-icons">person</i>{{statsCtrl.recentTracks[4].artist['#text']}}
+     <i class="material-icons carousel-icon">person</i>{{statsCtrl.recentTracks[4].artist['#text']}}
        </span>
      <span class="now-playing-text">
-       <i class="material-icons">schedule</i>{{statsCtrl.recentTracks[4].date.uts * 1000 | momentJS}}
+       <i class="material-icons carousel-icon">schedule</i><span time="{{statsCtrl.recentTracks[4].date.uts * 1000}}"></span>
      </span>
    </a>
 
@@ -85,8 +85,20 @@
   </div>
   <ul class="collapsible popout" data-collapsible="accordion">
     <li ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading && $index >= 4">
-      <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}} - <span time="{{recentTrack.date.uts * 1000}}"></span></div>
-      <div class="collapsible-body"><span>{{recentTrack.artist}}<br><br><img ng-if="recentTrack.image && recentTrack.image[2] && recentTrack.image[2]['#text']" src="{{ recentTrack.image[2]['#text'] }}" alt=""></span></div>
+      <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}}</div>
+      <div class="collapsible-body">
+        <div class="col s12 m6 recently-played-expand">
+          <h4>{{recentTrack.artist['#text']}}</h4>
+          <p>
+            Played <span time="{{recentTrack.date.uts * 1000}}"></span>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col s12 m6 recently-played-expand">
+            <img src="{{ recentTrack.image[2]['#text'] }}" alt="">
+          </div>
+        </div>
+      </div>
     </li>
   </ul>
   <h1 ng-if="!statsCtrl.loading">Top Artists This Week</h1>
