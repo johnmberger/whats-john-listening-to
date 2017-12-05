@@ -10,6 +10,15 @@
         return moment(input).fromNow();
       };
     })
+    .filter('photoError', function() {
+      return function(input) {
+        if (!input) {
+          return 'http://www.paulasaro.com/wp-content/themes/soundcheck/images/default-album-artwork.png';
+        } else {
+          return input;
+        }
+      };
+    })
     .directive('time', ['$timeout','$filter',
       function($timeout, $filter) {
 
