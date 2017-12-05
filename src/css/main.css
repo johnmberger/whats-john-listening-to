@@ -53,6 +53,11 @@ i.carousel-icon {
 @media (min-width: 750px) {
   padding-left: 1px;
 }
+@@media (max-width: 450px) {
+  .brand-logo {
+    font-size: 12px !important;
+  }
+}
 
 .recently-played-expand {
   display: flex;
