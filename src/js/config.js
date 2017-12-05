@@ -19,6 +19,15 @@
         }
       };
     })
+    .filter('personError', function() {
+      return function(input) {
+        if (!input) {
+          return 'https://openclipart.org/download/275133/persongeneric.svg';
+        } else {
+          return input;
+        }
+      };
+    })
     .directive('time', ['$timeout','$filter',
       function($timeout, $filter) {
 
