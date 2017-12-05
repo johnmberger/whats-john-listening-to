@@ -16,7 +16,7 @@
       .then((res, err) => {
         if (!err) {
           vm.weeklyArtists = res.data.topartists.artist;
-          return getStats.weeklyTracks()
+          return getStats.weeklyTracks();
         } else {
           vm.error = 'We\'re having trouble connecting to Last.fm. Please try later!';
           vm.loading = false;
@@ -25,7 +25,7 @@
       .then((res, err) => {
         if (!err) {
           vm.weeklyTracks = res.data.toptracks.track;
-          return getStats.recentTracks()
+          return getStats.recentTracks();
         } else {
           vm.error = 'We\'re having trouble connecting to Last.fm. Please try later!';
           vm.loading = false;
