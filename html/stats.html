@@ -103,7 +103,7 @@
   <h3 ng-if="!statsCtrl.loading">Top Artists This Week</h3>
   <ul class="collection" ng-if="!statsCtrl.loading" style="padding-bottom: 0px;">
     <li class="collection-item avatar" ng-repeat="topArtist in statsCtrl.weeklyArtists">
-      <img src="{{topArtist.image[1]['#text']}}" alt="{{topArtist.name}}" class="circle">
+      <img src="{{topArtist.image[1]['#text'] | personError}}" alt="{{topArtist.name}}" class="circle">
       <span class="title">{{topArtist.name}}</span>
       <p>
         {{topArtist.playcount}} plays this week
@@ -112,13 +112,16 @@
     </li>
   </ul>
   <h3 ng-if="!statsCtrl.loading">Top Tracks This Week</h3>
-  <div class="row" ng-repeat="topTrack in statsCtrl.weeklyTracks" ng-if="!statsCtrl.loading">
-    <div class="col s12">
-      {{topTrack.name}}
-      {{topTrack.playcount}}
-      {{topTrack.artist.name}}
-    </div>
-  </div>
+  <ul class="collection" ng-if="!statsCtrl.loading" style="padding-bottom: 0px;">
+    <li class="collection-item avatar" ng-repeat="topTrack in statsCtrl.weeklyTracks">
+      <img src="{{topTrack.image[1]['#text'] | personError}}" alt="{{topTrack.name}}" class="circle">
+      <span class="title"><strong>{{topTrack.name}}</strong> - {{topTrack.artist.name}}</span>
+      <p>
+        {{topTrack.playcount}} plays this week
+      </p>
+      <a href="#!" class="secondary-content" ng-if="$index < 3"><i class="material-icons leaderboard" ng-class="{gold: $index === 0, silver: $index === 1, bronze: $index === 2}" >grade</i></a>
+    </li>
+  </ul>
   <div ng-if="statsCtrl.error">
     <div class="row">
       <div class="col s12 m4 center-align">
