@@ -10,6 +10,35 @@
         return moment(input).fromNow();
       };
     })
+    .directive('time', ['$timeout','$filter',
+      function($timeout, $filter) {
+
+        return function(scope, element, attrs) {
+          let time = parseInt(attrs.time);
+          let intervalLength = 1000 * 20; // 20 seconds
+          let filter = $filter('momentJS');
+          let timeoutId;
+
+          function updateTime() {
+            element.text(filter(time));
+          }
+
+          function updateLater() {
+            timeoutId = $timeout(function() {
+              updateTime();
+              updateLater();
+            }, intervalLength);
+          }
+
+          element.bind('$destroy', function() {
+            $timeout.cancel(timeoutId);
+          });
+
+          updateTime();
+          updateLater();
+        };
+      }
+    ])
     .run(function($templateCache) {
       $templateCache.removeAll();
     });
