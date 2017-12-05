@@ -5,9 +5,9 @@
   angular
     .module('music.config', [])
     .config(appConfig)
-    .filter('dateFormat', function() {
+    .filter('momentJS', function() {
       return function(input) {
-        return new Date(input);
+        return moment(input).fromNow();
       };
     })
     .run(function($templateCache) {
