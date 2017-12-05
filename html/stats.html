@@ -90,12 +90,16 @@
     </li>
   </ul>
   <h1 ng-if="!statsCtrl.loading">Top Artists This Week</h1>
-  <div class="row" ng-repeat="topArtist in statsCtrl.weeklyArtists" ng-if="!statsCtrl.loading">
-    <div class="col s12">
-      {{topArtist.name}}
-      {{topArtist.playcount}}
-    </div>
-  </div>
+  <ul class="collection" ng-if="!statsCtrl.loading">
+    <li class="collection-item avatar" ng-repeat="topArtist in statsCtrl.weeklyArtists">
+      <img src="{{topArtist.image[1]['#text']}}" alt="{{topArtist.name}}" class="circle">
+      <span class="title">{{topArtist.name}}</span>
+      <p>
+        {{topArtist.playcount}} plays this week
+      </p>
+      <a href="#!" class="secondary-content" ng-if="$index < 3"><i class="material-icons leaderboard" ng-class="{gold: $index === 0, silver: $index === 1, bronze: $index === 2}" >grade</i></a>
+    </li>
+  </ul>
   <h1 ng-if="!statsCtrl.loading">Top Tracks This Week</h1>
   <div class="row" ng-repeat="topTrack in statsCtrl.weeklyTracks" ng-if="!statsCtrl.loading">
     <div class="col s12">
