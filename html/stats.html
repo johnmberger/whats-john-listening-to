@@ -85,7 +85,7 @@
   </div>
   <ul class="collapsible popout" data-collapsible="accordion">
     <li ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading && $index >= 4">
-      <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}} - {{recentTrack.date.uts * 1000 | momentJS}}</div>
+      <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}} - <span time="{{recentTrack.date.uts * 1000}}"></span></div>
       <div class="collapsible-body"><span>{{recentTrack.artist}}<br><br><img ng-if="recentTrack.image && recentTrack.image[2] && recentTrack.image[2]['#text']" src="{{ recentTrack.image[2]['#text'] }}" alt=""></span></div>
     </li>
   </ul>

@@ -18,10 +18,15 @@ body {
 }
 
 .now-playing-text {
+  white-space: nowrap;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
   text-decoration: none;
   color: black;
   font-size: 16px;
   display: flex;
+  flex: 1;
+  justify-content: center;
   align-items: center;
   i {
     margin-right: 8px;
