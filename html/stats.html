@@ -87,7 +87,8 @@
       <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}}</div>
       <div class="collapsible-body">
         <div class="col s12 m6 recently-played-expand">
-          <h4>{{recentTrack.artist['#text']}}</h4>
+          <p class="more-info"><i class="material-icons carousel-icon">music_video</i>{{recentTrack.name}}</p>
+          <p class="more-info"><i class="material-icons carousel-icon">person</i>{{recentTrack.artist['#text']}}</p>
           <p>
             Played <span time="{{recentTrack.date.uts * 1000}}"></span>
           </p>
