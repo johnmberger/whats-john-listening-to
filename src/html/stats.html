@@ -81,7 +81,7 @@
    </a>
 
    </div>
-  </div>
+ </div>
   <ul class="collapsible popout" data-collapsible="accordion">
     <li ng-repeat="recentTrack in statsCtrl.recentTracks" ng-if="!statsCtrl.loading && $index >= 4">
       <div class="collapsible-header"><i class="material-icons">queue_music</i>{{recentTrack.name}}</div>
@@ -92,10 +92,8 @@
             Played <span time="{{recentTrack.date.uts * 1000}}"></span>
           </p>
         </div>
-        <div class="row">
-          <div class="col s12 m6 recently-played-expand">
-            <img src="{{ recentTrack.image[2]['#text']  | photoError}}" alt="">
-          </div>
+        <div class="col s12 m6 recently-played-expand-album">
+          <img src="{{ recentTrack.image[2]['#text']  | photoError}}" alt="">
         </div>
       </div>
     </li>
