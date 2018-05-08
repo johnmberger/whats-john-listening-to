@@ -13,7 +13,7 @@
     .filter('photoError', function() {
       return function(input) {
         if (!input) {
-          return 'http://www.paulasaro.com/wp-content/themes/soundcheck/images/default-album-artwork.png';
+          return 'https://d2qqvwdwi4u972.cloudfront.net/static/img/default_album.png';
         } else {
           return input;
         }
